@@ -14,9 +14,12 @@ Users currently can Add and Delete contacts from the file.
 Contact Book/
 |-- contact_book/
 |   |-- test/
-|   |   |-- test_contact_book.py
+|   |   |-- contact_book_test.py
+|   |   |-- csv_functions_test.py
 |   |
 |   |-- contact_book.py
+|   |-- csv_functions.py
+|   |-- main.py
 |
 |-- README.md
 ```

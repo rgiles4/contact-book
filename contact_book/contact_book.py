@@ -1,11 +1,3 @@
-'''
-Simple Contact Book
-Create a contact book where users can add, search, and delete contact details
-(like name, phone number, and email).
-You can store the data in a dictionary or use a CSV file to
-practice file operations.
-'''
-
 import csv
 
 # Global Variables
@@ -14,48 +6,8 @@ fields = []
 rows = []
 
 
-# Read file; File is automatically closed
-def _read_contact_book_file_():
-    print(f"Opening {filename}...")
-    try:
-        with open(filename, 'r') as csvfile:
-            csvreader = csv.reader(csvfile)
-            fields.append(next(csvreader))
-            for row in csvreader:
-                rows.append(row)
-    except FileNotFoundError:
-        print(f"The file {filename} was not found.")
-        _create_contact_book_file_()
-    except Exception as e:
-        print(f"An error occured: {e}")
-
-
-# Asks the user if they want to create a contact_book file.
-# If yes, creates contact_book.csv
-# If no, exits program
-def _create_contact_book_file_():
-    print("Creating new contact_book file...")
-    try:
-        with open(filename, "w") as csvfile:
-            fields = ['First Name', 'Last Name', 'Email']
-            csvwriter = csv.writer(csvfile)
-            csvwriter.writerow(fields)
-
-    # Prevent loop of being unable to create a file
-    except FileNotFoundError:
-        print(f"Could not create {filename}. Exiting program...")
-        exit()
-
-    # If, for some reason, the file does actually exist, exit to
-    # prevent data loss. This is a programming error.
-    except FileExistsError:
-        print(f"{filename} already exists. Exiting...")
-        exit()
-    _read_contact_book_file_()
-
-
 # Add Contact to contact_book.csv
-def _add_contact_():
+def add_contact():
     try:
         first_name = input("Please enter the contact's First Name: ")
         last_name = input("Please enter the contact's Last Name: ")
@@ -84,7 +36,7 @@ def _search_for_contact_(contact_name):
     return None
 
 
-def _delete_contact_():
+def delete_contact():
     name = input(
         "Enter the First Name of the contact you'd like to delete: "
         )
@@ -105,16 +57,3 @@ def _delete_contact_():
             csvwriter = csv.writer(csvfile)
             csvwriter.writerows(rows)
         print("Contact Deleted Successfully!")
-
-
-# Main Method
-_read_contact_book_file_()
-
-'''
-Print Testing :)
-print(fields)
-print(rows)
-'''
-
-_add_contact_()
-# _delete_contact_()
