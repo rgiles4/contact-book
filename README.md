@@ -11,12 +11,19 @@ Users currently can Add and Delete contacts from the file.
 
 ## File Structure
 Contact Book/
+
 |-- contact_book/
+
 |   |-- test/
+
 |   |   |-- test_contact_book.py
+
 |   |
+
 |   |-- contact_book.py
+
 |
+
 |-- README.md
 
 
