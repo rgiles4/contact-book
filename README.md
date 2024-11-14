@@ -10,22 +10,16 @@ the List is modified, and then the file is updated.
 Users currently can Add and Delete contacts from the file.
 
 ## File Structure
+```
 Contact Book/
-
 |-- contact_book/
-
 |   |-- test/
-
 |   |   |-- test_contact_book.py
-
 |   |
-
 |   |-- contact_book.py
-
 |
-
 |-- README.md
-
+```
 
 ## CI/CD
 I do not intend to perform a proper "Continuous Delivery" development cycle, however PyTest and GitHub Actions
