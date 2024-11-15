@@ -1,4 +1,16 @@
-import csv
+'''
+This file contains all functions that
+involve modifying the contact book.
+
+Functions in this file ONLY modify the rows List.
+Any modifications to the contact_book.csv should be done
+in csv_functions.py.
+'''
+
+from csv_functions import (
+    add_to_file,
+    delete_from_file
+)
 
 # Global Variables
 filename = "contact_book.csv"
@@ -22,14 +34,11 @@ def add_contact():
         print(f"Invalid Input: {e}")
 
     new_contact = [first_name, last_name, email]
-
-    with open(filename, "a", newline="") as csvfile:
-        csvwriter = csv.writer(csvfile)
-        csvwriter.writerow(new_contact)
+    fields, rows = add_to_file(filename, new_contact)
 
 
 # Find entry in contact book
-def _search_for_contact_(contact_name):
+def search_for_contact(contact_name):
     for row in rows:
         if row[0].lower() == contact_name.lower():
             return row
@@ -40,7 +49,7 @@ def delete_contact():
     name = input(
         "Enter the First Name of the contact you'd like to delete: "
         )
-    contact = _search_for_contact_(name)
+    contact = search_for_contact(name)
 
     if contact is None:
         print("That contact was not found.")
@@ -50,10 +59,5 @@ def delete_contact():
         print(f"{contact[0]} {contact[1]}")
         response = input("Confirm (Y/N): ")
         if (response == 'Y' or response == 'y'):
-            for row in rows:
-                if row[0].lower() != contact[0].lower():
-                    rows.append(row)
-        with open(filename, "w", newline="") as csvfile:
-            csvwriter = csv.writer(csvfile)
-            csvwriter.writerows(rows)
+            fields, rows = delete_from_file(filename, contact)
         print("Contact Deleted Successfully!")

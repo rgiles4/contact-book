@@ -15,8 +15,14 @@ from contact_book import (
     delete_contact
 )
 
+# TODO: Figure out Global Variables. Does only this file need fields and rows?
+# Important Variables
+fields = []
+rows = []
+
+
 # Main Method
-read_contact_book_file()
+fields, rows = read_contact_book_file()
 
 '''
 Print Testing :)
